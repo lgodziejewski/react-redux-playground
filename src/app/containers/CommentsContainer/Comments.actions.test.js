@@ -7,11 +7,10 @@ import {
   getCommentsFailed,
   getCommentsFinished,
   fetchComments,
-  commentsUrl,
 } from './Comments.actions';
 
 import data from './Comments.mock';
-import { api } from '../../constants';
+import { translateComment } from './Comments.reducers';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -82,7 +81,7 @@ describe('Comments actions', () => {
         },
         {
           type: commentsActions.GET_COMMENTS_FINISHED,
-          comments: data,
+          comments: data.map(translateComment),
         },
       ];
       const store = mockStore({ comments: [] });

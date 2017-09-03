@@ -4,18 +4,16 @@ export const comments = (state = [], action) => {
   switch (action.type) {
     case commentsActions.GET_COMMENTS_FINISHED:
 
-      const data = action.comments.map(translateComment);
-
       return [
         ...state,
-        ...data,
+        ...action.comments,
       ];
     default:
       return state;
   }
 };
 
-const translateComment = (comment) => {
+export const translateComment = (comment) => {
   return {
     id: comment.id,
     title: comment.name,

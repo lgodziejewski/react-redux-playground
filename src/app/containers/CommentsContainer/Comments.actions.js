@@ -1,4 +1,5 @@
 import { api } from '../../constants';
+import { translateComment } from './Comments.reducers';
 
 export const commentsActions = {
   LOADING_COMMENTS: 'LOADING_COMMENTS',
@@ -44,7 +45,7 @@ export const fetchComments = () => {
 
       const data = await response.json();
 
-      dispatch(getCommentsFinished(data));
+      dispatch(getCommentsFinished(data.map(translateComment)));
     } catch (err) {
       dispatch(getCommentsFailed(err.message));
     }
