@@ -2,6 +2,8 @@ export const photosActions = {
   LOADING_PHOTOS: 'LOADING_PHOTOS',
   GET_PHOTOS_FINISHED: 'GET_PHOTOS_FINISHED',
   GET_PHOTOS_FAILED: 'GET_PHOTOS_FAILED',
+  SET_PAGE: 'SET_PAGE',
+  SET_PAGE_LENGTH: 'SET_PAGE_LENGTH',
 };
 
 export const photosLoading = (loading) => {
@@ -47,5 +49,23 @@ export const fetchPhotos = () => {
       dispatch(photosLoading(false));
       dispatch(getPhotosFailed(err.message));
     }
+  };
+};
+
+export const setPage = (event) => {
+  const value = Number(event.target.value);
+
+  return {
+    type: photosActions.SET_PAGE,
+    value,
+  };
+};
+
+export const setPageLength = (event) => {
+  const value = Number(event.target.value);
+
+  return {
+    type: photosActions.SET_PAGE_LENGTH,
+    value,
   };
 };

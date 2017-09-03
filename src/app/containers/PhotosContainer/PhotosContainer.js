@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ContentView from '../../components/ContentView/ContentView';
 import { connect } from 'react-redux';
-import { fetchPhotos } from './Photos.actions';
+import { fetchPhotos, setPage, setPageLength } from './Photos.actions';
+
+import TableView from '../../components/TableView/TableView';
 
 class PhotosContainer extends Component {
 
@@ -12,7 +13,7 @@ class PhotosContainer extends Component {
 
   render() {
     return (
-      <ContentView
+      <TableView
         {...this.props}
       />
     );
@@ -20,16 +21,31 @@ class PhotosContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  const page = state.photosPage;
+  const pageLength  = state.photosPageLength;
+  let data = state.photos;
+  const entriesLength = data.length;
+
+  const totalPages = Math.ceil(entriesLength / pageLength);
+
+  // split data into pages
+  data = data.slice(page * pageLength, (page + 1) * pageLength);
+
   return {
-    data: state.photos.slice(0, 50),
+    data,
     loading: state.photosLoading,
     error: state.photosError,
+    page,
+    pageLength,
+    totalPages,
     title: 'Photos:',
   };
 };
 
 const mapDispatchToProps = {
   fetchPhotos,
+  setPageLength,
+  setPage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotosContainer);

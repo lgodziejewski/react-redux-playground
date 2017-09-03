@@ -39,3 +39,21 @@ export const photosError = (state = '', action) => {
       return state;
   }
 };
+
+export const photosPage = (state = 0, action) => {
+  switch (action.type) {
+    case photosActions.SET_PAGE:
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+export const photosPageLength = (state = 20, action) => {
+  switch (action.type) {
+    case photosActions.SET_PAGE_LENGTH:
+      return action.value;
+    default:
+      return state;
+  }
+};

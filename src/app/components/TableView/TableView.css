@@ -1,0 +1,16 @@
+.table-view-input-row {
+    display: flex;
+}
+
+.table-view-table {
+    border-collapse: collapse;
+}
+
+.table-view-table thead {
+    font-weight: bold;
+}
+
+.table-view-table td {
+    border: 1px solid black;
+    padding: 10px;
+}
