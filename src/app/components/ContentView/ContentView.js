@@ -10,10 +10,10 @@ export default function ContentView(props) {
 
         <p>{props.error}</p>
         {
-          props.data.map(post => (
-            <div key={`post-${post.id}`} className="content-view-data-entry">
-              <h3>{`#${post.id}: ${post.title}`}</h3>
-              <p>{post.body}</p>
+          props.data.map(entry => (
+            <div key={`post-${entry.id}`} className="content-view-data-entry">
+              <h3>{`#${entry.id}: ${entry.title}`}</h3>
+              <p>{entry.body}</p>
             </div>
           ))
         }
