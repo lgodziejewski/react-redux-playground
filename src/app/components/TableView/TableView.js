@@ -68,8 +68,8 @@ TableView.propTypes = {
   pageLength: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
-  setPageLength: PropTypes.func,
-  setPage: PropTypes.func,
+  setPageLength: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
 };
 
 TableView.defaultProps = {
@@ -78,4 +78,6 @@ TableView.defaultProps = {
   pageLength: 20,
   page: 0,
   totalPages: 1,
+  setPageLength: () => null,
+  setPage: () => null,
 };
