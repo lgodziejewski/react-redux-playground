@@ -46,7 +46,6 @@ export const fetchComments = () => {
 
       dispatch(getCommentsFinished(data));
     } catch (err) {
-      dispatch(commentsLoading(false));
       dispatch(getCommentsFailed(err.message));
     }
   };
