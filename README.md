@@ -9,7 +9,7 @@ As this app is based on CRA, all of the following commands are just like in the 
 
 ## Installation
 
-Please use the below command to install all package requirements.
+Please use the command below to install all package requirements.
 ```
 npm install
 ```
