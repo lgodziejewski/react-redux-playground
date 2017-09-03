@@ -13,6 +13,7 @@ import PhotosContainer from './app/containers/PhotosContainer/PhotosContainer';
 import Menu from './app/components/Menu/Menu';
 
 import './App.css';
+import { localStorageWrapper } from './app/utils';
 
 const Home = () => (
   <div>
@@ -20,7 +21,18 @@ const Home = () => (
   </div>
 );
 
-const store = createStore(appStore, applyMiddleware(thunk));
+const persistedPageLength = localStorageWrapper.loadPageLength();
+const store = createStore(
+  appStore,
+  {
+    photosPageLength: persistedPageLength,
+  },
+  applyMiddleware(thunk)
+);
+
+store.subscribe(() => {
+  localStorageWrapper.savePageLength(store.getState().photosPageLength);
+});
 
 class App extends Component {
   render() {
