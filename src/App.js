@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
 
 import appStore from './app/reducers';
 
@@ -19,7 +20,7 @@ const Home = () => (
   </div>
 );
 
-const store = createStore(appStore);
+const store = createStore(appStore, applyMiddleware(thunk));
 
 class App extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getComments } from './Comments.actions';
+import { fetchComments } from './Comments.actions';
 
 import ContentView from '../../components/ContentView/ContentView';
 
@@ -10,7 +10,7 @@ class CommentsContainer extends Component {
 
     // required to obtain data on init, don't dispatch if data already present
     if (!this.props.data.length)
-      this.props.getComments();
+      this.props.fetchComments();
   }
 
   render() {
@@ -25,12 +25,14 @@ class CommentsContainer extends Component {
 const mapStateToProps = state => {
   return {
     data: state.comments,
+    loading: state.commentsLoading,
+    error: state.commentsError,
     title: 'Comments:',
   };
 };
 
 const mapDispatchToProps = {
-  getComments,
+  fetchComments,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentsContainer);

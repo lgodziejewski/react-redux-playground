@@ -1,15 +1,14 @@
-import data from './Comments.mock';
 import { commentsActions } from './Comments.actions';
 
-const comments = (state = [], action) => {
+export const comments = (state = [], action) => {
   switch (action.type) {
-    case commentsActions.GET_COMMENTS:
-      // TODO call fetch and return result
-      const newData = data.map(translateComment);
+    case commentsActions.GET_COMMENTS_FINISHED:
+
+      const data = action.comments.map(translateComment);
 
       return [
         ...state,
-        ...newData,
+        ...data,
       ];
     default:
       return state;
@@ -21,7 +20,23 @@ const translateComment = (comment) => {
     id: comment.id,
     title: comment.name,
     body: comment.body,
+  };
+};
+
+export const commentsLoading = (state = false, action) => {
+  switch (action.type) {
+    case commentsActions.LOADING_COMMENTS:
+      return action.loading;
+    default:
+      return state;
   }
 };
 
-export default comments;
+export const commentsError = (state = '', action) => {
+  switch (action.type) {
+    case commentsActions.GET_COMMENTS_FAILED:
+      return action.error;
+    default:
+      return state;
+  }
+};
