@@ -7,7 +7,7 @@ export default function ContentView(props) {
       <p>{props.title}</p>
       <div>
         {props.data.map(post => (
-          <div className="content-view-data-entry">
+          <div key={`post-${post.id}`} className="content-view-data-entry">
             <h3>{`#${post.id}: ${post.title}`}</h3>
             <p>{post.body}</p>
           </div>
