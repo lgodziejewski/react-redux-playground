@@ -1,19 +1,32 @@
-import data from './Posts.mock';
 import { postActions } from './Posts.actions';
 
-const posts = (state = [], action) => {
+export const posts = (state = [], action) => {
   switch (action.type) {
-    case postActions.GET_POSTS:
-      // TODO call fetch and return result
-      const newData = data;
+    case postActions.GET_POSTS_FINISHED:
 
       return [
         ...state,
-        ...newData,
+        ...action.posts,
       ];
     default:
       return state;
   }
 };
 
-export default posts;
+export const postsLoading = (state = false, action) => {
+  switch (action.type) {
+    case postActions.LOADING_POSTS:
+      return action.loading;
+    default:
+      return state;
+  }
+};
+
+export const postsError = (state = '', action) => {
+  switch (action.type) {
+    case postActions.GET_POSTS_FAILED:
+      return action.error;
+    default:
+      return state;
+  }
+};

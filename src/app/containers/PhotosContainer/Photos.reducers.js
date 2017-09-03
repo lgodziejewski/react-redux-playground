@@ -1,11 +1,9 @@
-import photosData from './Photos.mock';
 import { photosActions } from './Photos.actions';
 
-const photos = (state = [], action) => {
+export const photos = (state = [], action) => {
   switch (action.type) {
-    case photosActions.GET_PHOTOS:
-      // TODO call fetch and return result
-      const newData = photosData.map(translatePhoto);
+    case photosActions.GET_PHOTOS_FINISHED:
+      const newData = action.photos.map(translatePhoto);
 
       return [
         ...state,
@@ -24,4 +22,20 @@ const translatePhoto = (photo) => {
   };
 };
 
-export default photos;
+export const photosLoading = (state = false, action) => {
+  switch (action.type) {
+    case photosActions.LOADING_PHOTOS:
+      return action.loading;
+    default:
+      return state;
+  }
+};
+
+export const photosError = (state = '', action) => {
+  switch (action.type) {
+    case photosActions.GET_PHOTOS_FAILED:
+      return action.error;
+    default:
+      return state;
+  }
+};

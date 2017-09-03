@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ContentView from '../../components/ContentView/ContentView';
 import { connect } from 'react-redux';
-import { getPhotos } from './Photos.actions';
+import { fetchPhotos } from './Photos.actions';
 
 class PhotosContainer extends Component {
 
   componentDidMount() {
     if (!this.props.data.length)
-      this.props.getPhotos();
+      this.props.fetchPhotos();
   }
 
   render() {
@@ -21,13 +21,15 @@ class PhotosContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.photos,
+    data: state.photos.slice(0, 50),
+    loading: state.photosLoading,
+    error: state.photosError,
     title: 'Photos:',
   };
 };
 
 const mapDispatchToProps = {
-  getPhotos,
+  fetchPhotos,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotosContainer);
