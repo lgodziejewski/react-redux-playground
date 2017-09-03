@@ -1,12 +1,9 @@
 import data from './Comments.mock';
-
-export const actions = {
-  GET_DATA: 'GET_DATA',
-};
+import { commentsActions } from './Comments.actions';
 
 const comments = (state = [], action) => {
   switch (action.type) {
-    case actions.GET_DATA:
+    case commentsActions.GET_COMMENTS:
       // TODO call fetch and return result
       const newData = data.map(translateComment);
 

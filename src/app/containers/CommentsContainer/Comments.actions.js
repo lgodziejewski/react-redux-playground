@@ -1,7 +1,9 @@
-import { actions } from './Comments.reducers';
+export const commentsActions = {
+  GET_COMMENTS: 'GET_COMMENTS',
+};
 
-export const getData = () => {
+export const getComments = () => {
   return {
-    type: actions.GET_DATA,
+    type: commentsActions.GET_COMMENTS,
   };
 };
