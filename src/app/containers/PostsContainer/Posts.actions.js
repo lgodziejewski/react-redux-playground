@@ -1,3 +1,5 @@
+import { api } from '../../constants';
+
 export const postActions = {
   LOADING_POSTS: 'LOADING_POSTS',
   GET_POSTS_FINISHED: 'GET_POSTS_FINISHED',
@@ -26,7 +28,7 @@ export const getPostsFinished = (posts) => {
 };
 
 export const fetchPosts = () => {
-  const url = 'http://jsonplaceholder.typicode.com/posts';
+  const url = `${api.domain}${api.posts}`;
 
   return async (dispatch) => {
 

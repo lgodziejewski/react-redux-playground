@@ -1,3 +1,5 @@
+import { api } from '../../constants';
+
 export const photosActions = {
   LOADING_PHOTOS: 'LOADING_PHOTOS',
   GET_PHOTOS_FINISHED: 'GET_PHOTOS_FINISHED',
@@ -28,7 +30,7 @@ export const getPhotosFinished = (photos) => {
 };
 
 export const fetchPhotos = () => {
-  const url = 'http://jsonplaceholder.typicode.com/photos';
+  const url = `${api.domain}${api.photos}`;
 
   return async (dispatch) => {
 
