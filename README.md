@@ -31,7 +31,7 @@ all tests, press 'a' after the interactive console is shown.
 
 Tests are currently implemented only for the `Comments` container(actions, reducers).
 
-There are also simple `render` tests for all views. 
+There are also simple `render` tests for all views.
 
 ## Structure
 
@@ -46,3 +46,8 @@ found, along with their actions, reducers and tests
 + constants.js - as the name says - list of app constants
 + reducers.js - combine all container reducers
 + utils.js - helper functions, currently containing localStorageWrapper
+
+## TODO
++ [ ] views tests using [Enzyme](http://airbnb.io/enzyme/) (at least one view for reference)
++ [ ] data cache?
++ [ ] 
