@@ -29,6 +29,10 @@ npm test
 By default, it runs only tests according to current diff. If you want to run
 all tests, press 'a' after the interactive console is shown.
 
+Tests are currently implemented only for the `Comments` container(actions, reducers).
+
+There are also simple `render` tests for all views. 
+
 ## Structure
 
 The `src` directory contains all of the source files - application bootstrapper index.js
