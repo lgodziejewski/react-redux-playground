@@ -1,10 +1,12 @@
+import { api } from '../../constants';
+
 export const commentsActions = {
   LOADING_COMMENTS: 'LOADING_COMMENTS',
   GET_COMMENTS_FINISHED: 'GET_COMMENTS_FINISHED',
   GET_COMMENTS_FAILED: 'GET_COMMENTS_FAILED',
 };
 
-export const commentsLoading = (loading) => {
+export const setCommentsLoading = (loading) => {
   return {
     type: commentsActions.LOADING_COMMENTS,
     loading,
@@ -26,15 +28,15 @@ export const getCommentsFinished = (comments) => {
 };
 
 export const fetchComments = () => {
-  const url = 'http://jsonplaceholder.typicode.com/comments';
+  const url = `${api.domain}${api.comments}`;
 
   return async (dispatch) => {
 
-    dispatch(commentsLoading(true));
+    dispatch(setCommentsLoading(true));
     try {
       const response = await fetch(url);
 
-      dispatch(commentsLoading(false));
+      dispatch(setCommentsLoading(false));
 
       if (!response.ok) {
         throw Error(`Error ${response.status}: ${response.statusText}`);
